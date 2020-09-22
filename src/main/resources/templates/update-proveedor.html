@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title th:text="Proveedor"></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="/css/shards.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/addcategoria.css}">
+<script th:src="@{/js/all.js}"></script>
+</head>
+
+<body>
+
+
+	<div class="container register">
+		<h2 class="mb-5" th:text="Modificar-Proveedor"></h2>
+		<div class="row">
+			<div class="col-md-3 register-left">
+				<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+				<h3>Modificar</h3>
+			</div>
+			<div class="col-md-9 register-right">
+				<h3 class="register-heading">Modificar Proveedor</h3>
+				<form action="#" th:action="@{/updateProveedor/{id_proveedor}(id_proveedor=${proveedor.id_proveedor})}" th:object="${proveedor}" method="post">
+					<div class="tab-content" id="myTabContent">
+						<br> <br> <br> <br> <br>
+						<div class="row">
+<br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+							<div class="row">
+
+								<div class="form-group col-md-6">
+									<label for="nombre" class="col-form-label" th:text="Nombre"></label>
+									<input type="text" th:field="*{nombre}" class="form-control"
+										id="nombre" th:placeholder="Nombre" required="required">
+									<span th:if="${#fields.hasErrors('nombre')}" th:errors="nombre"
+										class="text-danger"></span>
+
+								</div>
+
+
+
+
+								<div class="form-group col-md-6">
+									<label for="telefono" class="col-form-label" th:text="Telefono"></label>
+									<input type="text" th:field="*{telefono}" class="form-control"
+										id="direccion" th:placeholder="Telefono" required="required">
+									<span th:if="${#fields.hasErrors('telefono')}"
+										th:errors="*{telefono}" class="text-danger"></span>
+								</div>
+
+
+								<div class="form-group col-md-6">
+									<label for="categoria" class="col-form-label"
+										th:text="Municipio"></label> <select th:field="*{municipio}"
+										class="form-control">
+										<option th:each="muni : ${municipios}"
+											th:value="${muni.id_municipio}" th:text="${muni.nombre}">
+										</option>
+									</select>
+								</div>
+
+
+
+								<div class="form-group col-md-6">
+									<label for="descripcion" class="col-form-label"
+										th:text="Direccion"></label> <input type="text"
+										th:field="*{direccion}" class="form-control" id="direccion"
+										th:placeholder="Direccion" required="required"> <span
+										th:if="${#fields.hasErrors('direccion')}"
+										th:errors="*{direccion}" class="text-danger"></span>
+
+									<div class="col-md-6 mt-5">
+										<input type="submit" class="btnRegister" th:value="Modificar">
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+				</form>
+			</div>
+		</div>
+		<div class="row"></div>
+
+	</div>
+</body>
+
+</html>
